@@ -26,7 +26,9 @@ Raspberry Pi Buster
 Must have the following modules:
 
 smtplib, https://docs.python.org/3/library/smtplib.html
+
 base64, https://docs.python.org/3/library/base64.html
+
 email, https://docs.python.org/3/library/email.html
 
 ###########################
