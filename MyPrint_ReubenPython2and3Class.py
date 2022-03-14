@@ -6,9 +6,9 @@ reuben.brewer@gmail.com
 www.reubotics.com
 
 Apache 2 License
-Software Revision E, 09/03/2021
+Software Revision G, 03/13/2022
 
-Verified working on: Python 2.7 and 3.7 for Windows 8.1 64-bit and Raspberry Pi Buster (no Mac testing yet).
+Verified working on: Python 2.7, 3.8 for Windows 8.1, 10 64-bit and Raspberry Pi Buster (no Mac testing yet).
 '''
 
 __author__ = 'reuben.brewer'
@@ -39,6 +39,14 @@ if sys.version_info[0] < 3:
     from builtins import raw_input as input
 else:
     from future.builtins import input as input #"sudo pip3 install future" (Python 3) AND "sudo pip install future" (Python 2)
+###############
+
+###############
+import platform
+if platform.system() == "Windows":
+    import ctypes
+    winmm = ctypes.WinDLL('winmm')
+    winmm.timeBeginPeriod(1) #Set minimum timer resolution to 1ms so that time.sleep(0.001) behaves properly.
 ###############
 
 ##########################################################################################################
@@ -169,6 +177,15 @@ class MyPrint_ReubenPython2and3Class(Frame): #Subclass the Tkinter Frame
                 self.GUI_COLUMNSPAN = 0
 
             print("GUI_COLUMNSPAN = " + str(self.GUI_COLUMNSPAN))
+            ##########################################
+            
+            ##########################################
+            if "GUI_STICKY" in self.GUIparametersDict:
+                self.GUI_STICKY = str(self.GUIparametersDict["GUI_STICKY"])
+            else:
+                self.GUI_STICKY = "w"
+
+            print("GUI_STICKY = " + str(self.GUI_STICKY))
             ##########################################
             
         else:
@@ -463,7 +480,8 @@ class MyPrint_ReubenPython2and3Class(Frame): #Subclass the Tkinter Frame
                           padx = self.GUI_PADX,
                           pady = self.GUI_PADY,
                           rowspan = self.GUI_ROWSPAN,
-                          columnspan= self.GUI_COLUMNSPAN)
+                          columnspan = self.GUI_COLUMNSPAN,
+                          sticky = self.GUI_STICKY)
         ########################
 
         ########################

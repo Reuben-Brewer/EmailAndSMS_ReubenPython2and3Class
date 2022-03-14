@@ -4,9 +4,9 @@ reuben.brewer@gmail.com
 www.reubotics.com
 
 Apache 2 License
-Software Revision C, 09/05/2021
+Software Revision D, 03/13/2022
 
-Verified working on: Python 2.7 and 3 for Windows 8.1 64-bit and Raspberry Pi Buster (no Mac testing yet).
+Verified working on: Python 2.7, 3.8 for Windows 8.1, 10 64-bit and Raspberry Pi Buster (no Mac testing yet).
 '''
 
 __author__ = 'reuben.brewer'
@@ -100,30 +100,11 @@ def GUI_update_clock():
 ##########################################################################################################
 ##########################################################################################################
 def ExitProgram_Callback():
-    global root
     global EXIT_PROGRAM_FLAG
-    global GUI_RootAfterCallbackInterval_Milliseconds
 
-    global EmailAndSMS_ReubenPython2and3ClassObject
-    global EmailAndSMS_OPEN_FLAG
-
-    global MyPrint_ReubenPython2and3ClassObject
-    global MYPRINT_OPEN_FLAG
-
-    print("Exiting all threads in test_program_for_MyPrint_ReubenPython2and3Class.")
+    print("ExitProgram_Callback event fired!")
 
     EXIT_PROGRAM_FLAG = 1
-
-    #########################################################
-    if EmailAndSMS_OPEN_FLAG == 1:
-        EmailAndSMS_ReubenPython2and3ClassObject.ExitProgram_Callback()
-    #########################################################
-
-    #########################################################
-    if MYPRINT_OPEN_FLAG == 1:
-        MyPrint_ReubenPython2and3ClassObject.ExitProgram_Callback()
-    #########################################################
-
 ##########################################################################################################
 ##########################################################################################################
 
@@ -246,26 +227,48 @@ if __name__ == '__main__':
     global EXIT_PROGRAM_FLAG
     EXIT_PROGRAM_FLAG = 0
 
-    global root
-
-    global GUI_RootAfterCallbackInterval_Milliseconds
-    GUI_RootAfterCallbackInterval_Milliseconds = 30
-
-    global EmailAndSMS_ReubenPython2and3ClassObject
-
-    global EmailAndSMS_OPEN_FLAG
-    EmailAndSMS_OPEN_FLAG = -1
-
-    global MyPrint_ReubenPython2and3ClassObject
-
-    global MYPRINT_OPEN_FLAG
-    MYPRINT_OPEN_FLAG = -1
-
     global MainLoopThread_current_time
     MainLoopThread_current_time = -11111
 
     global MainLoopThread_starting_time
     MainLoopThread_starting_time = -11111
+
+    global root
+
+    global GUI_RootAfterCallbackInterval_Milliseconds
+    GUI_RootAfterCallbackInterval_Milliseconds = 30
+    #################################################
+    #################################################
+
+    #################################################
+    #################################################
+    global EmailAndSMS_ReubenPython2and3ClassObject
+
+    global EmailAndSMS_OPEN_FLAG
+    EmailAndSMS_OPEN_FLAG = -1
+
+    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict
+
+    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageCounter
+    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageCounter =  -11111.0
+
+    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageTimeSeconds
+    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageTimeSeconds = -11111.0
+
+    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageType
+    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageType = ""
+
+    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageContentsDict
+    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageContentsDict = ""
+    #################################################
+    #################################################
+
+    #################################################
+    #################################################
+    global MyPrint_ReubenPython2and3ClassObject
+
+    global MYPRINT_OPEN_FLAG
+    MYPRINT_OPEN_FLAG = -1
     #################################################
     #################################################
 
@@ -284,21 +287,7 @@ if __name__ == '__main__':
 
     #################################################
     #################################################
-    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict
-
-    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageCounter
-    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageCounter =  -11111.0
-
-    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageTimeSeconds
-    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_TxMessageTimeSeconds = -11111.0
-
-    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageType
-    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageType = ""
-
-    global EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageContentsDict
-    EmailAndSMS_ReubenPython2and3ClassObject_MostRecentRxMessageDict_MessageContentsDict = ""
-
-
+    global EmailAndSMS_GUIparametersDict
     EmailAndSMS_GUIparametersDict = dict([("USE_GUI_FLAG", USE_GUI_FLAG and SHOW_IN_GUI_EmailAndSMS_FLAG),
                                     ("root", root),
                                     ("EnableInternal_MyPrint_Flag", 1),
@@ -311,6 +300,7 @@ if __name__ == '__main__':
                                     ("GUI_ROWSPAN", GUI_ROWSPAN_EmailAndSMS),
                                     ("GUI_COLUMNSPAN", GUI_COLUMNSPAN_EmailAndSMS)])
 
+    global EmailAndSMS_setup_dict
     EmailAndSMS_setup_dict = dict([("EmailSenderAccountUsername", "SenderEmailAddress@gmail.com"),
                                     ("EmailSenderAccountPassword", "password"),
                                     ("EmailAddress_RecipientList", ["RecipientEmailAddress@gmail.com"]),
@@ -436,6 +426,22 @@ if __name__ == '__main__':
     #################################################
     #################################################
 
+    ################################################# THIS IS THE EXIT ROUTINE!
+    #################################################
     print("Exiting main program 'test_program_for_EmailAndSMS_ReubenPython2and3ClassObject_Generic.")
+
+    #################################################
+    if EmailAndSMS_OPEN_FLAG == 1:
+        EmailAndSMS_ReubenPython2and3ClassObject.ExitProgram_Callback()
+    #################################################
+
+    #################################################
+    if MYPRINT_OPEN_FLAG == 1:
+        MyPrint_ReubenPython2and3ClassObject.ExitProgram_Callback()
+    #################################################
+
+    #################################################
+    #################################################
+
     ##########################################################################################################
     ##########################################################################################################
