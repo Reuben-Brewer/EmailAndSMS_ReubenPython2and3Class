@@ -12,7 +12,7 @@ www.reubotics.com
 
 Apache 2 License
 
-Software Revision D, 03/13/2022
+Software Revision E, 08/29/2022
 
 Verified working on:
 
@@ -24,11 +24,26 @@ Raspberry Pi Buster
 
 (no Mac testing yet)
 
+'''
+
+If you want to send text messages to verizon numbers, perhaps try sending from a non-Gmail account!
+When sending a VText through a Gmail account, the message may be delayed or blocked
+due the high volumes of malicious messages originating from the Gmail server.
+If you find the delay to be troublesome, we may recommend using another email account besides one from Gmail.
+
+'''
+
 ########################  
 
 ########################### Python module installation instructions, all OS's
 
-Must have the following modules:
+EmailAndSMS_ReubenPython2and3Class, ListOfModuleDependencies: ['future.builtins']
+
+EmailAndSMS_ReubenPython2and3Class, ListOfModuleDependencies_TestProgram: ['MyPrint_ReubenPython2and3Class']
+
+EmailAndSMS_ReubenPython2and3Class, ListOfModuleDependencies_NestedLayers: ['future.builtins']
+
+EmailAndSMS_ReubenPython2and3Class, ListOfModuleDependencies_All: ['future.builtins', 'MyPrint_ReubenPython2and3Class']
 
 smtplib, https://docs.python.org/3/library/smtplib.html
 
