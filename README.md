@@ -12,7 +12,7 @@ www.reubotics.com
 
 Apache 2 License
 
-Software Revision E, 08/29/2022
+Software Revision F, 09/21/2022
 
 Verified working on:
 
@@ -25,12 +25,10 @@ Raspberry Pi Buster
 (no Mac testing yet)
 
 '''
-
 If you want to send text messages to verizon numbers, perhaps try sending from a non-Gmail account!
 When sending a VText through a Gmail account, the message may be delayed or blocked
 due the high volumes of malicious messages originating from the Gmail server.
 If you find the delay to be troublesome, we may recommend using another email account besides one from Gmail.
-
 '''
 
 ########################  
